@@ -52,10 +52,9 @@
                                :builds {
                                         :app {:source-paths ["env/dev/cljs"]}
                                         :test {:source-paths ["src/cljs" "src/cljs/om_components" "test/cljs"]
-                                               :notify-command ["phantomjs" :cljs.test/runner "phantom/bind-polyfill.js" "target/cljs/testable.js"]
                                                :compiler {:output-to "target/cljs/testable.js"
                                                           :optimizations :whitespace
                                                           :preamble ["react/react.min.js"]
-                                                          :pretty-print true}}
-                                        }
-}}})
+                                                          :pretty-print true}
+                                               }
+                                        }}}})

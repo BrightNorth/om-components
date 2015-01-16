@@ -2,7 +2,7 @@
   (:require-macros [cemerick.cljs.test :refer (is deftest with-test run-tests testing test-var)])
   (:require [cemerick.cljs.test]
             [om-components.test.common :refer [new-container!]]
-            [om-components.core :refer [create-url alert-box]]
+            [om-components.core :refer [alert-box]]
             [dommy.core :refer-macros [sel sel1]]
             [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]))
