@@ -6,16 +6,19 @@
 
 
 (defn alert-box
-  "Bootstrap Alert div"
+  "Bootstrap Alert div; expects cursor to contain:
+      :show? -> SHould the alert be rendered at all?
+      :message-text -> What's the alert text?
+      (optional) :alert-class -> Additional CSS classes for the alert DIV"
   [cursor owner]
   (reify om/IRender
     (render [_]
-      (if (:show-validation-error? cursor)
-        (dom/div #js {:className "alert alert-danger alert-dismissible" :role "alert"}
+      (if (:show? cursor)
+        (dom/div #js {:className (str "alert alert-dismissible" (:alert-class cursor)) :role "alert"}
                  (dom/button #js{:className  "close"
                                  :aria-label "Close"
                                  :onClick    (fn [_]
-                                               (om/transact! cursor :show-validation-error? (fn [_] false)))}
+                                               (om/transact! cursor :show? (fn [_] false)))}
                              (dom/span #js{:className "glyphicon glyphicon-remove"} nil))
                  (dom/p nil (:message-text cursor)))))))
 
@@ -26,12 +29,13 @@
   "Bootstrap Panel div; expects cursor to contain:
       :panel-title -> String,
       :body -> nodes,
+      (optional) :container-class -> positioning classes for containing div
       (optional) :panel-class -> additional String class for panel div"
   [cursor owner]
   (reify
     om/IRender
     (render [_]
-      (dom/div #js {:className "col-md-6 col-md-offset-3"}
+      (dom/div #js {:className (:container-class cursor)}
                (dom/div #js{:className (str "panel panel-default" " " (:panel-class cursor))}
-                        (dom/div #js{:className "panel-heading"} (dom/h4 #js{:className "panel-title"} (:panel-title cursor)))
+                        (dom/div #js {:className "panel-heading"} (dom/h4 #js{:className "panel-title"} (:panel-title cursor)))
                         (dom/div #js {:className "panel-body"} (:body cursor)))))))

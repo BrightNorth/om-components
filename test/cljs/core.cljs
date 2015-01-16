@@ -10,11 +10,11 @@
 
 (deftest alertbox-displays-when-flag-set
   (let [c (new-container!)]
-    (om/root alert-box {:show-validation-error? true :message-text "Hello world"} {:target c})
+    (om/root alert-box {:show? true :message-text "Now you see me..."} {:target c})
     (is (sel1 :div.alert))))
 
 
 (deftest alertbox-does-not-display-when-flag-not-set
   (let [c (new-container!)]
-    (om/root alert-box {:show-validation-error? false :message-text "Hello world"} {:target c})
+    (om/root alert-box {:show? false :message-text "... now you don't!"} {:target c})
     (is (nil? (sel1 :div.alert)))))
