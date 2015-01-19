@@ -54,6 +54,7 @@
                                :builds {
                                         :app {:source-paths ["env/dev/cljs"]}
                                         :test {:source-paths ["src/cljs" "src/cljs/om_components" "test/cljs"]
+                                          ;; UNCOMMENT TO ENABLE AUTOTEST  :notify-command ["phantomjs" :cljs.test/runner "phantom/bind-polyfill.js" "target/cljs/testable.js"]
                                                :compiler {:output-to "target/cljs/testable.js"
                                                           :optimizations :whitespace
                                                           :preamble ["react/react.min.js"]
