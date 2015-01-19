@@ -9,7 +9,7 @@
 
 (defn alert-box
   "Bootstrap Alert div; expects cursor to contain:
-  :show? -> Should the alert be rendered at all?
+  :hidden? -> Should the alert be rendered at all?
   :message-text -> What's the alert text?
   (optional) :alert-class -> Additional CSS classes for the alert DIV"
   [cursor owner]
@@ -17,15 +17,12 @@
     om/IRender
     (render [_]
       (if (not (:hidden? cursor))
-        (do
-
           (dom/div #js {:className (str "alert alert-dismissible " (:alert-class cursor)) :role "alert"}
                    (dom/button #js{:className  "close"
                                    :aria-label "Close"
-                                   :onClick    (fn [_] (om/transact! cursor (fn [_] (not (:hidden? cursor)))))}
+                                   :onClick    (fn [_] (om/transact! cursor :hidden? (fn [_] true)))}
                                (dom/span #js{:className "glyphicon glyphicon-remove"} nil))
-                   (dom/p nil (:message-text cursor))))
-        ))))
+                   (dom/p nil (:message-text cursor)))))))
 
 
 (defn panel
