@@ -17,12 +17,14 @@
     om/IRender
     (render [_]
       (if (not (:hidden? cursor))
+
           (dom/div #js {:className (str "alert alert-dismissible " (:alert-class cursor)) :role "alert"}
                    (dom/button #js{:className  "close"
                                    :aria-label "Close"
                                    :onClick    (fn [_] (om/transact! cursor :hidden? (fn [_] true)))}
                                (dom/span #js{:className "glyphicon glyphicon-remove"} nil))
-                   (dom/p nil (:message-text cursor)))))))
+                   (dom/p nil (:message-text cursor))))
+      )))
 
 
 (defn panel
