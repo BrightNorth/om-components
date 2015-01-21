@@ -6,22 +6,13 @@
 
   :source-paths ["src/clj" "src/cljs" "target/classes"]
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2371" :scope "provided"]
-                 [ring "1.3.1"]
-                 [compojure "1.2.0"]
+  :dependencies [[org.clojure/clojure "1.6.0" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-2511" :scope "provided"]
                  [enlive "1.1.5"]
-                 [om "0.7.3"]
-                 [prismatic/dommy "1.0.0"]
-                 [figwheel "0.1.4-SNAPSHOT"]
-                 [environ "1.0.0"]
-                 [com.cemerick/piggieback "0.1.3"]
-                 [weasel "0.4.0-SNAPSHOT"]
-                 [leiningen "2.5.0"]]
+                 [om "0.8.0-rc1"]
+                 [environ "1.0.0"]]
 
-  :plugins [[lein-cljsbuild "1.0.4"]
-            [com.cemerick/clojurescript.test "0.3.3"]
-            [lein-environ "1.0.0"]]
+  :plugins [[lein-environ "1.0.0"]]
 
   :min-lein-version "2.5.0"
 
@@ -41,11 +32,21 @@
   :profiles {:dev {:repl-options {:init-ns om-components.server
                                   :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
 
-                   :plugins [[lein-figwheel "0.1.4-SNAPSHOT"]]
+                   :plugins [[com.cemerick/clojurescript.test "0.3.3"]
+                             [lein-cljsbuild "1.0.4"]
+                             [lein-figwheel "0.1.6-SNAPSHOT"]]
 
                    :figwheel {:http-server-root "public"
                               :port 3449
                               :css-dirs ["resources/public/css"]}
+
+                   :dependencies [[com.cemerick/piggieback "0.1.3"]
+                                  [weasel "0.4.2"]
+                                  [figwheel "0.1.6-SNAPSHOT"]
+                                  [ring "1.3.2"]
+                                  [compojure "1.3.1"]
+                                  [prismatic/dommy "1.0.0"]
+                                  [leiningen "2.5.0"]]
 
                    :env {:is-dev true}
 
