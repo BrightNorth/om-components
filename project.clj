@@ -1,22 +1,17 @@
 (defproject om-components "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "A set of Om components using Bootstrap markup"
   :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/clj" "src/cljs" "target/classes"]
 
   :dependencies [[org.clojure/clojure "1.6.0" :scope "provided"]
                  [org.clojure/clojurescript "0.0-2511" :scope "provided"]
-                 [enlive "1.1.5"]
-                 [om "0.8.0-rc1"]
+                 [om "0.8.0-rc1" :scope "provided"]
                  [environ "1.0.0"]]
 
   :plugins [[lein-environ "1.0.0"]]
 
   :min-lein-version "2.5.0"
-
-  :uberjar-name "om-components.jar"
 
   :clean-targets ^{:protect false} ["resources/public/js/app.js" "resources/public/js/out.js.map" "resources/public/js/out" "target"]
 
