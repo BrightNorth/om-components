@@ -59,4 +59,6 @@
                                         }}}}
 
   :repositories [["snapshots" {:url "http://nexus.brightnorth.co.uk/content/repositories/snapshots" :password :env :username :env}]
-                 ["releases" {:url "http://nexus.brightnorth.co.uk/content/repositories/releases" :password :env :username :env}]])
+                 ["releases" {:url "http://nexus.brightnorth.co.uk/content/repositories/releases" :password :env :username :env}]]
+
+  :deploy-repositories [["s3-releases" {:url "s3p://artifacts.brightnorth.co.uk/releases/" :username :env :passphrase :env}]])
